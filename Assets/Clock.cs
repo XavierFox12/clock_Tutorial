@@ -24,6 +24,14 @@ public class Clock : MonoBehaviour {
 
 		//Minutes
 		int minutes = time.Minute;
+		Vector3 minutesEuler = new Vector3 (0f, 0f, (1f - (minutes / 60f)) * 360f);
+		minuteHand.transform.rotation = Quaternion.Euler (minutesEuler);
+
+		//Hours
+		hourHand.transform.rotation = Quaternion.Euler (Vector3.forward * (1f - (time.Hour / 12f) * 360f));
+		/*
+		//Minutes
+		int minutes = time.Minute;
 
 		float minutes_normalized = minutes / 60f;
 		float minutes_degrees = minutes_normalized * 360f;
@@ -43,5 +51,6 @@ public class Clock : MonoBehaviour {
 		Vector3 hourRotation = new Vector3 (0f, 0f, clockwise_hour);
 		Quaternion hourRotationQuat = Quaternion.Euler (hourRotation);
 		hourHand.transform.rotation = hourRotationQuat;
+		*/
 	}
 }
